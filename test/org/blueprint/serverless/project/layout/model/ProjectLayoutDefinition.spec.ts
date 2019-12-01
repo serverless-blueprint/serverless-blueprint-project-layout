@@ -7,7 +7,7 @@ describe("Project Layout Definition", () => {
     it("should return a path containing project name given no definition elements", () => {
 
         let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint", []);
-        let paths = projectLayoutDefinition.layoutHierarchyPaths();
+        let paths = projectLayoutDefinition.hierarchyPaths();
 
         expect(paths).to.eql(["serverless-blueprint"]);
     });
@@ -18,7 +18,7 @@ describe("Project Layout Definition", () => {
         let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint",
             [projectLayoutDefinitionElementSrc]);
 
-        let paths = projectLayoutDefinition.layoutHierarchyPaths();
+        let paths = projectLayoutDefinition.hierarchyPaths();
 
         expect(paths).to.eql(["serverless-blueprint/src"]);
     });
@@ -30,7 +30,7 @@ describe("Project Layout Definition", () => {
         let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint",
             [projectLayoutDefinitionElementSrc]);
 
-        let paths = projectLayoutDefinition.layoutHierarchyPaths();
+        let paths = projectLayoutDefinition.hierarchyPaths();
 
         expect(paths).to.deep.equal(["serverless-blueprint/src/serverless"]);
     });
@@ -43,7 +43,7 @@ describe("Project Layout Definition", () => {
         let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint",
             [projectLayoutDefinitionElementSrc]);
 
-        let paths = projectLayoutDefinition.layoutHierarchyPaths();
+        let paths = projectLayoutDefinition.hierarchyPaths();
 
         expect(paths).to.deep.equal(["serverless-blueprint/src/serverless/repository"]);
     });
@@ -57,7 +57,7 @@ describe("Project Layout Definition", () => {
         let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint",
             [projectLayoutDefinitionElementSrc]);
 
-        let paths = projectLayoutDefinition.layoutHierarchyPaths();
+        let paths = projectLayoutDefinition.hierarchyPaths();
 
         expect(paths).to.deep.equal(["serverless-blueprint/src/serverless/repository/code"]);
     });
@@ -72,7 +72,7 @@ describe("Project Layout Definition", () => {
         let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint",
             [projectLayoutDefinitionElementSrc, projectLayoutDefinitionElementTest]);
 
-        let paths = projectLayoutDefinition.layoutHierarchyPaths();
+        let paths = projectLayoutDefinition.hierarchyPaths();
 
         expect(paths).to.deep.equal(["serverless-blueprint/src/serverless/repository", "serverless-blueprint/test/serverless/repository"]);
     });
