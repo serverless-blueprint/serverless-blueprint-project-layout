@@ -6,7 +6,7 @@ describe("Project Layout Definition", () => {
 
     it("should return a path containing project name given no definition elements", () => {
 
-        let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint", []);
+        let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint", []);
         let paths = projectLayoutDefinition.hierarchyPaths();
 
         expect(paths).to.eql(["serverless-blueprint"]);
@@ -15,7 +15,7 @@ describe("Project Layout Definition", () => {
     it("should return a path containing project name and src directory name", () => {
 
         let projectLayoutDefinitionElementSrc = new ProjectLayoutDefinitionElement("src");
-        let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint",
+        let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint",
             [projectLayoutDefinitionElementSrc]);
 
         let paths = projectLayoutDefinition.hierarchyPaths();
@@ -27,7 +27,7 @@ describe("Project Layout Definition", () => {
 
         let projectLayoutDefinitionElementModule = new ProjectLayoutDefinitionElement("serverless");
         let projectLayoutDefinitionElementSrc = new ProjectLayoutDefinitionElement("src", [projectLayoutDefinitionElementModule]);
-        let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint",
+        let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint",
             [projectLayoutDefinitionElementSrc]);
 
         let paths = projectLayoutDefinition.hierarchyPaths();
@@ -40,7 +40,7 @@ describe("Project Layout Definition", () => {
         let projectLayoutDefinitionElementRepository = new ProjectLayoutDefinitionElement("repository");
         let projectLayoutDefinitionElementModule = new ProjectLayoutDefinitionElement("serverless", [projectLayoutDefinitionElementRepository]);
         let projectLayoutDefinitionElementSrc = new ProjectLayoutDefinitionElement("src", [projectLayoutDefinitionElementModule]);
-        let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint",
+        let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint",
             [projectLayoutDefinitionElementSrc]);
 
         let paths = projectLayoutDefinition.hierarchyPaths();
@@ -54,7 +54,7 @@ describe("Project Layout Definition", () => {
         let projectLayoutDefinitionElementRepository = new ProjectLayoutDefinitionElement("repository", [projectLayoutDefinitionElementCode]);
         let projectLayoutDefinitionElementModule = new ProjectLayoutDefinitionElement("serverless", [projectLayoutDefinitionElementRepository]);
         let projectLayoutDefinitionElementSrc = new ProjectLayoutDefinitionElement("src", [projectLayoutDefinitionElementModule]);
-        let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint",
+        let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint",
             [projectLayoutDefinitionElementSrc]);
 
         let paths = projectLayoutDefinition.hierarchyPaths();
@@ -69,7 +69,7 @@ describe("Project Layout Definition", () => {
         let projectLayoutDefinitionElementSrc = new ProjectLayoutDefinitionElement("src", [projectLayoutDefinitionElementModule]);
         let projectLayoutDefinitionElementTest = new ProjectLayoutDefinitionElement("test", [projectLayoutDefinitionElementModule]);
 
-        let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint",
+        let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint",
             [projectLayoutDefinitionElementSrc, projectLayoutDefinitionElementTest]);
 
         let paths = projectLayoutDefinition.hierarchyPaths();

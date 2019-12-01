@@ -16,7 +16,7 @@ describe("Project Layout Builder", () => {
 
     it("should create a directory from layout definition containing just the project name", () => {
 
-        let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint", []);
+        let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint", []);
         sinon.stub(ProjectLayoutDefinitions, 'findBy')
             .callsFake(() => projectLayoutDefinition);
 
@@ -32,7 +32,7 @@ describe("Project Layout Builder", () => {
     it("should create a directory from layout definition with project name and a module name", () => {
 
         let projectLayoutDefinitionElement = new ProjectLayoutDefinitionElement("src");
-        let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint", [projectLayoutDefinitionElement]);
+        let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint", [projectLayoutDefinitionElement]);
         sinon.stub(ProjectLayoutDefinitions, 'findBy')
             .callsFake(() => projectLayoutDefinition);
 
@@ -51,7 +51,7 @@ describe("Project Layout Builder", () => {
 
         let projectLayoutDefinitionElementSrc = new ProjectLayoutDefinitionElement("src");
         let projectLayoutDefinitionElementTest = new ProjectLayoutDefinitionElement("test");
-        let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint",
+        let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint",
             [projectLayoutDefinitionElementSrc, projectLayoutDefinitionElementTest]);
 
         sinon.stub(ProjectLayoutDefinitions, 'findBy')
@@ -77,7 +77,7 @@ describe("Project Layout Builder", () => {
         let directory = "tmp";
         fs.mkdirSync(directory);
 
-        let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint", []);
+        let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint", []);
         sinon.stub(ProjectLayoutDefinitions, 'findBy')
             .callsFake(() => projectLayoutDefinition);
 

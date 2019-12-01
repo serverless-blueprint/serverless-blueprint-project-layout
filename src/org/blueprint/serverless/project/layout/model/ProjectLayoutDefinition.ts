@@ -3,12 +3,15 @@ import {DirectoryPath} from "../utils/DirectoryPath";
 
 export class ProjectLayoutDefinition {
 
-    public readonly projectName: string;
-    public readonly projectLayoutDefinitionElements: ProjectLayoutDefinitionElement[];
+    public projectName: string;
+    public projectLayoutDefinitionElements: ProjectLayoutDefinitionElement[];
 
-    constructor(projectName: string, projectLayoutDefinitionElements: ProjectLayoutDefinitionElement[]) {
-        this.projectName = projectName;
-        this.projectLayoutDefinitionElements = projectLayoutDefinitionElements;
+    static create(projectName: string, projectLayoutDefinitionElements: ProjectLayoutDefinitionElement[]): ProjectLayoutDefinition {
+        let definition = new ProjectLayoutDefinition();
+        definition.projectName = projectName;
+        definition.projectLayoutDefinitionElements = projectLayoutDefinitionElements;
+
+        return definition;
     }
 
     hierarchyPaths(): string[] {
