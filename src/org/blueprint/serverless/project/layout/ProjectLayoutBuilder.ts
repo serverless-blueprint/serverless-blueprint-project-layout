@@ -8,6 +8,12 @@ export class ProjectLayoutBuilder {
 
     buildIn(aDirectory: string) {
         let projectLayoutDefinition = ProjectLayoutDefinitions.findBy(this.layoutType);
-        Mkdirp.sync(projectLayoutDefinition.projectName);
+        let directoryPath;
+        if (projectLayoutDefinition.projectLayoutDefinitionElements.length > 0)
+            directoryPath = `${projectLayoutDefinition.projectName}/${projectLayoutDefinition.projectLayoutDefinitionElements[0].name}`;
+        else
+            directoryPath = `${projectLayoutDefinition.projectName}`;
+
+        Mkdirp.sync(directoryPath);
     }
 }
