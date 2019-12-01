@@ -23,7 +23,7 @@ describe("Project Layout Definition", () => {
         expect(paths).to.eql(["serverless-blueprint/src"]);
     });
 
-    it("should return a path containing project name, src directory name and module name", () => {
+    it("should return a path containing project name, src directory name and a module name", () => {
 
         let projectLayoutDefinitionElementModule = new ProjectLayoutDefinitionElement("serverless");
         let projectLayoutDefinitionElementSrc = new ProjectLayoutDefinitionElement("src", [projectLayoutDefinitionElementModule]);
@@ -62,7 +62,7 @@ describe("Project Layout Definition", () => {
         expect(paths).to.deep.equal(["serverless-blueprint/src/serverless/repository/code"]);
     });
 
-    it("should return a path containing project name, src directory name, module name with a directory name and another parallel test directory", () => {
+    it("should return multiple paths containing project name, src directory name, module name with a directory name and another parallel test directory", () => {
 
         let projectLayoutDefinitionElementRepository = new ProjectLayoutDefinitionElement("repository");
         let projectLayoutDefinitionElementModule = new ProjectLayoutDefinitionElement("serverless", [projectLayoutDefinitionElementRepository]);
