@@ -15,13 +15,10 @@ export class ProjectLayoutDefinition {
         if (this.projectLayoutDefinitionElements.length == 0)
             return [this.projectName];
 
-        let paths: string[] = [];
-        for (let projectLayoutDefinitionElement of this.projectLayoutDefinitionElements) {
-            let path = projectLayoutDefinitionElement.hierarchyPathStartingAt(
+        return this.projectLayoutDefinitionElements.map(projectLayoutDefinitionElement => {
+            return projectLayoutDefinitionElement.hierarchyPathStartingAt(
                 DirectoryPath.create(this.projectName, projectLayoutDefinitionElement.name)
             );
-            paths = paths.concat(path);
-        }
-        return paths;
+        });
     }
 }
