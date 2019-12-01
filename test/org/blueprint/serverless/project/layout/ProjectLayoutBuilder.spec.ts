@@ -72,4 +72,24 @@ describe("Project Layout Builder", () => {
         fs.rmdirSync(testDirectoryPath);
         fs.rmdirSync(projectLayoutDefinition.projectName)
     });
+
+    it("should create a directory from layout definition containing just the project name in specified directory", () => {
+        let directory = "tmp";
+        fs.mkdirSync(directory);
+
+        let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint", []);
+        sinon.stub(ProjectLayoutDefinitions, 'findBy')
+            .callsFake(() => projectLayoutDefinition);
+
+        let path = `${directory}/${projectLayoutDefinition.projectName}`;
+        let projectLayoutBuilder = new ProjectLayoutBuilder(ProjectLayoutType.Nested);
+
+        projectLayoutBuilder.buildIn(directory);
+
+        let directoryCreated = fs.existsSync(path);
+        expect(directoryCreated).to.be.true;
+
+        fs.rmdirSync(path);
+        fs.rmdirSync(directory);
+    });
 });
