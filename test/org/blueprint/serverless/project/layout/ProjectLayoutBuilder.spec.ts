@@ -5,7 +5,7 @@ import * as sinon from 'sinon';
 import {ProjectLayoutBuilder} from "../../../../../../src/org/blueprint/serverless/project/layout/ProjectLayoutBuilder";
 import {ProjectLayoutType} from "../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutType";
 import {ProjectLayoutDefinitions} from "../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutDefinitions";
-import {ProjectLayoutDefinition} from "../../../../../../src/org/blueprint/serverless/project/layout/ProjectLayoutDefinition";
+import {ProjectLayoutDefinition} from "../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutDefinition";
 
 describe("Project Layout Builder", () => {
 
