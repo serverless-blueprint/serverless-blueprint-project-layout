@@ -8,6 +8,9 @@ export class ProjectLayoutBuilder {
 
     buildIn(aDirectory: string) {
         let projectLayoutDefinition = ProjectLayoutDefinitions.findBy(this.layoutType);
-        Mkdirp.sync(projectLayoutDefinition.hierarchyPaths()[0]);
+
+        projectLayoutDefinition.hierarchyPaths().forEach(path => {
+            Mkdirp.sync(path);
+        });
     }
 }

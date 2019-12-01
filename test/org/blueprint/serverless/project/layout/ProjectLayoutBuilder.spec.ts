@@ -42,8 +42,34 @@ describe("Project Layout Builder", () => {
         let directoryCreated = fs.existsSync(`${projectLayoutDefinition.projectName}/${projectLayoutDefinitionElement.name}`);
         expect(directoryCreated).to.be.true;
 
-        let directoryPath = `${projectLayoutDefinition.projectName}/${projectLayoutDefinition.projectLayoutDefinitionElements[0].name}`;
+        let directoryPath = `${projectLayoutDefinition.projectName}/${projectLayoutDefinitionElement.name}`;
         fs.rmdirSync(directoryPath);
         fs.rmdirSync(projectLayoutDefinition.projectName);
+    });
+
+    it("should create a directory from layout definition with project name and a module name", () => {
+
+        let projectLayoutDefinitionElementSrc = new ProjectLayoutDefinitionElement("src");
+        let projectLayoutDefinitionElementTest = new ProjectLayoutDefinitionElement("test");
+        let projectLayoutDefinition = new ProjectLayoutDefinition("serverless-blueprint",
+            [projectLayoutDefinitionElementSrc, projectLayoutDefinitionElementTest]);
+
+        sinon.stub(ProjectLayoutDefinitions, 'findBy')
+            .callsFake(() => projectLayoutDefinition);
+
+        let projectLayoutBuilder = new ProjectLayoutBuilder(ProjectLayoutType.Nested);
+        projectLayoutBuilder.buildIn(".");
+
+        let srcDirectoryPath = `${projectLayoutDefinition.projectName}/${projectLayoutDefinitionElementSrc.name}`;
+        let srcDirectoryCreated = fs.existsSync(srcDirectoryPath);
+        expect(srcDirectoryCreated).to.be.true;
+
+        let testDirectoryPath = `${projectLayoutDefinition.projectName}/${projectLayoutDefinitionElementTest.name}`;
+        let testDirectoryCreated = fs.existsSync(testDirectoryPath);
+        expect(testDirectoryCreated).to.be.true;
+
+        fs.rmdirSync(srcDirectoryPath);
+        fs.rmdirSync(testDirectoryPath);
+        fs.rmdirSync(projectLayoutDefinition.projectName)
     });
 });

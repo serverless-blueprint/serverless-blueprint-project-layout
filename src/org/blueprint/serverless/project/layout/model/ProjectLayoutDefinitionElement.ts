@@ -10,7 +10,6 @@ export class ProjectLayoutDefinitionElement {
     }
 
     hierarchyPathStartingAt(path: string): string {
-
         // noinspection LoopStatementThatDoesntLoopJS
         for (let projectLayoutDefinitionElement of this.projectLayoutDefinitionElements) {
             return projectLayoutDefinitionElement.projectLayoutDefinitionElements.length == 0 ?
