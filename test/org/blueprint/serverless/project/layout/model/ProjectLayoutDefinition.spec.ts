@@ -14,7 +14,7 @@ describe("Project Layout Definition", () => {
 
     it("should return a path containing project name and src directory name", () => {
 
-        let projectLayoutDefinitionElementSrc = new ProjectLayoutDefinitionElement("src");
+        let projectLayoutDefinitionElementSrc = ProjectLayoutDefinitionElement.create("src");
         let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint",
             [projectLayoutDefinitionElementSrc]);
 
@@ -25,8 +25,8 @@ describe("Project Layout Definition", () => {
 
     it("should return a path containing project name, src directory name and a module name", () => {
 
-        let projectLayoutDefinitionElementModule = new ProjectLayoutDefinitionElement("serverless");
-        let projectLayoutDefinitionElementSrc = new ProjectLayoutDefinitionElement("src", [projectLayoutDefinitionElementModule]);
+        let projectLayoutDefinitionElementModule = ProjectLayoutDefinitionElement.create("serverless");
+        let projectLayoutDefinitionElementSrc = ProjectLayoutDefinitionElement.create("src", [projectLayoutDefinitionElementModule]);
         let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint",
             [projectLayoutDefinitionElementSrc]);
 
@@ -37,9 +37,9 @@ describe("Project Layout Definition", () => {
 
     it("should return a path containing project name, src directory name, module name with a directory name", () => {
 
-        let projectLayoutDefinitionElementRepository = new ProjectLayoutDefinitionElement("repository");
-        let projectLayoutDefinitionElementModule = new ProjectLayoutDefinitionElement("serverless", [projectLayoutDefinitionElementRepository]);
-        let projectLayoutDefinitionElementSrc = new ProjectLayoutDefinitionElement("src", [projectLayoutDefinitionElementModule]);
+        let projectLayoutDefinitionElementRepository = ProjectLayoutDefinitionElement.create("repository");
+        let projectLayoutDefinitionElementModule = ProjectLayoutDefinitionElement.create("serverless", [projectLayoutDefinitionElementRepository]);
+        let projectLayoutDefinitionElementSrc = ProjectLayoutDefinitionElement.create("src", [projectLayoutDefinitionElementModule]);
         let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint",
             [projectLayoutDefinitionElementSrc]);
 
@@ -50,10 +50,10 @@ describe("Project Layout Definition", () => {
 
     it("should return a path containing project name, src directory name, module name, directory name and a sub-directory name", () => {
 
-        let projectLayoutDefinitionElementCode = new ProjectLayoutDefinitionElement("code");
-        let projectLayoutDefinitionElementRepository = new ProjectLayoutDefinitionElement("repository", [projectLayoutDefinitionElementCode]);
-        let projectLayoutDefinitionElementModule = new ProjectLayoutDefinitionElement("serverless", [projectLayoutDefinitionElementRepository]);
-        let projectLayoutDefinitionElementSrc = new ProjectLayoutDefinitionElement("src", [projectLayoutDefinitionElementModule]);
+        let projectLayoutDefinitionElementCode = ProjectLayoutDefinitionElement.create("code");
+        let projectLayoutDefinitionElementRepository = ProjectLayoutDefinitionElement.create("repository", [projectLayoutDefinitionElementCode]);
+        let projectLayoutDefinitionElementModule = ProjectLayoutDefinitionElement.create("serverless", [projectLayoutDefinitionElementRepository]);
+        let projectLayoutDefinitionElementSrc = ProjectLayoutDefinitionElement.create("src", [projectLayoutDefinitionElementModule]);
         let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint",
             [projectLayoutDefinitionElementSrc]);
 
@@ -64,10 +64,10 @@ describe("Project Layout Definition", () => {
 
     it("should return multiple paths containing project name, src directory name, module name with a directory name and another parallel test directory", () => {
 
-        let projectLayoutDefinitionElementRepository = new ProjectLayoutDefinitionElement("repository");
-        let projectLayoutDefinitionElementModule = new ProjectLayoutDefinitionElement("serverless", [projectLayoutDefinitionElementRepository]);
-        let projectLayoutDefinitionElementSrc = new ProjectLayoutDefinitionElement("src", [projectLayoutDefinitionElementModule]);
-        let projectLayoutDefinitionElementTest = new ProjectLayoutDefinitionElement("test", [projectLayoutDefinitionElementModule]);
+        let projectLayoutDefinitionElementRepository = ProjectLayoutDefinitionElement.create("repository");
+        let projectLayoutDefinitionElementModule = ProjectLayoutDefinitionElement.create("serverless", [projectLayoutDefinitionElementRepository]);
+        let projectLayoutDefinitionElementSrc = ProjectLayoutDefinitionElement.create("src", [projectLayoutDefinitionElementModule]);
+        let projectLayoutDefinitionElementTest = ProjectLayoutDefinitionElement.create("test", [projectLayoutDefinitionElementModule]);
 
         let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint",
             [projectLayoutDefinitionElementSrc, projectLayoutDefinitionElementTest]);

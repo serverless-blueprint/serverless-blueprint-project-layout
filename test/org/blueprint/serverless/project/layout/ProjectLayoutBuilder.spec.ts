@@ -31,7 +31,7 @@ describe("Project Layout Builder", () => {
 
     it("should create a directory from layout definition with project name and a module name", () => {
 
-        let projectLayoutDefinitionElement = new ProjectLayoutDefinitionElement("src");
+        let projectLayoutDefinitionElement = ProjectLayoutDefinitionElement.create("src");
         let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint", [projectLayoutDefinitionElement]);
         sinon.stub(ProjectLayoutDefinitions, 'findBy')
             .callsFake(() => projectLayoutDefinition);
@@ -49,8 +49,8 @@ describe("Project Layout Builder", () => {
 
     it("should create a directory from layout definition with project name and a module name", () => {
 
-        let projectLayoutDefinitionElementSrc = new ProjectLayoutDefinitionElement("src");
-        let projectLayoutDefinitionElementTest = new ProjectLayoutDefinitionElement("test");
+        let projectLayoutDefinitionElementSrc = ProjectLayoutDefinitionElement.create("src");
+        let projectLayoutDefinitionElementTest = ProjectLayoutDefinitionElement.create("test");
         let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint",
             [projectLayoutDefinitionElementSrc, projectLayoutDefinitionElementTest]);
 
