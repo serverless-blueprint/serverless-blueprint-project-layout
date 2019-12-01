@@ -16,7 +16,7 @@ describe("Project Layout Builder", () => {
             .callsFake(() => projectLayoutDefinition);
 
         let projectLayoutBuilder = new ProjectLayoutBuilder(ProjectLayoutType.Nested);
-        projectLayoutBuilder.build(".");
+        projectLayoutBuilder.buildIn(".");
 
         let directoryCreated = fs.existsSync(projectLayoutDefinition.projectName);
         expect(directoryCreated).to.be.true;

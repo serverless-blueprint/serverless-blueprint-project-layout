@@ -6,7 +6,7 @@ export class ProjectLayoutBuilder {
     constructor(private layoutType: ProjectLayoutType) {
     }
 
-    build(directorName: string) {
+    buildIn(aDirectory: string) {
         let projectLayoutDefinition = ProjectLayoutDefinitions.findBy(this.layoutType);
         Mkdirp.sync(projectLayoutDefinition.projectName);
     }
