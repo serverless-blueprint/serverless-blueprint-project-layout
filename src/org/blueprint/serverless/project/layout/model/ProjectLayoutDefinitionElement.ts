@@ -1,7 +1,12 @@
 import {DirectoryPath} from "../utils/DirectoryPath";
 
+import {Type} from "class-transformer";
+import "reflect-metadata";
+
 export class ProjectLayoutDefinitionElement {
     public name: string;
+
+    @Type(() => ProjectLayoutDefinitionElement)
     public projectLayoutDefinitionElements: ProjectLayoutDefinitionElement[];
 
     static create(name: string, projectLayoutDefinitionElements: ProjectLayoutDefinitionElement[] = []) : ProjectLayoutDefinitionElement {
@@ -15,12 +20,16 @@ export class ProjectLayoutDefinitionElement {
     hierarchyPathStartingAt(path: string): string {
         // noinspection LoopStatementThatDoesntLoopJS
         for (let projectLayoutDefinitionElement of this.projectLayoutDefinitionElements) {
-            return projectLayoutDefinitionElement.projectLayoutDefinitionElements.length == 0 ?
+            return !projectLayoutDefinitionElement.furtherHierarchyExists() ?
                 DirectoryPath.create(path, projectLayoutDefinitionElement.name) :
                 projectLayoutDefinitionElement.hierarchyPathStartingAt(
                     DirectoryPath.create(path, projectLayoutDefinitionElement.name)
                 );
         }
         return path;
+    }
+
+    private furtherHierarchyExists() {
+        return this.projectLayoutDefinitionElements && this.projectLayoutDefinitionElements.length > 0;
     }
 }

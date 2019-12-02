@@ -1,9 +1,14 @@
 import {ProjectLayoutDefinitionElement} from "./ProjectLayoutDefinitionElement";
 import {DirectoryPath} from "../utils/DirectoryPath";
 
+import {Type} from "class-transformer";
+import "reflect-metadata";
+
 export class ProjectLayoutDefinition {
 
     public projectName: string;
+
+    @Type(() => ProjectLayoutDefinitionElement)
     public projectLayoutDefinitionElements: ProjectLayoutDefinitionElement[];
 
     static create(projectName: string, projectLayoutDefinitionElements: ProjectLayoutDefinitionElement[]): ProjectLayoutDefinition {

@@ -1,0 +1,31 @@
+{
+  "projectName": "serverless-blueprint",
+  "projectLayoutDefinitionElements": [
+    {
+      "name": "src",
+      "projectLayoutDefinitionElements": [
+        {
+          "name": "serverless",
+          "projectLayoutDefinitionElements": [
+            {
+              "name": "controller"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "test",
+      "projectLayoutDefinitionElements": [
+        {
+          "name": "serverless",
+          "projectLayoutDefinitionElements": [
+            {
+              "name": "controller"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

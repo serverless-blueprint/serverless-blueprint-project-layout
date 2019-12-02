@@ -13,8 +13,10 @@
   },
   "homepage": "https://github.com/serverless-blueprint/serverless-blueprint-project-layout#readme",
   "dependencies": {
-    "typescript": "^3.7.2",
-    "mkdirp": "latest"
+    "class-transformer": "^0.2.3",
+    "mkdirp": "latest",
+    "reflect-metadata": "^0.1.13",
+    "typescript": "^3.7.2"
   },
   "scripts": {
     "build": "tsc",

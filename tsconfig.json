@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+      "experimentalDecorators": true,
     "noEmitOnError": true,
     "outDir": "./out",
     "sourceRoot": "src/",
