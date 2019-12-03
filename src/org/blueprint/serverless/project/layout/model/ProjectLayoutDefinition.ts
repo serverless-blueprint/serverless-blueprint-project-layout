@@ -1,5 +1,5 @@
 import {ProjectLayoutDefinitionElement} from "./ProjectLayoutDefinitionElement";
-import {DirectoryPath} from "../utils/DirectoryPath";
+import {Path} from "../utils/Path";
 
 import {Type} from "class-transformer";
 import "reflect-metadata";
@@ -25,7 +25,7 @@ export class ProjectLayoutDefinition {
 
         return this.projectLayoutDefinitionElements.map(projectLayoutDefinitionElement => {
             return projectLayoutDefinitionElement.hierarchyPathStartingAt(
-                DirectoryPath.create(this.projectName, projectLayoutDefinitionElement.name)
+                Path.create(this.projectName, projectLayoutDefinitionElement.name)
             );
         });
     }

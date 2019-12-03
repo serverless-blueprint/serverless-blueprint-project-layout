@@ -1,4 +1,4 @@
-import {DirectoryPath} from "../utils/DirectoryPath";
+import {Path} from "../utils/Path";
 
 import {Type} from "class-transformer";
 import "reflect-metadata";
@@ -21,9 +21,9 @@ export class ProjectLayoutDefinitionElement {
         // noinspection LoopStatementThatDoesntLoopJS
         for (let projectLayoutDefinitionElement of this.projectLayoutDefinitionElements) {
             return !projectLayoutDefinitionElement.furtherHierarchyExists() ?
-                DirectoryPath.create(path, projectLayoutDefinitionElement.name) :
+                Path.create(path, projectLayoutDefinitionElement.name) :
                 projectLayoutDefinitionElement.hierarchyPathStartingAt(
-                    DirectoryPath.create(path, projectLayoutDefinitionElement.name)
+                    Path.create(path, projectLayoutDefinitionElement.name)
                 );
         }
         return path;

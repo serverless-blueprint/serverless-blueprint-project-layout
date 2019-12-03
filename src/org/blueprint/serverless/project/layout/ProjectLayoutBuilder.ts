@@ -1,6 +1,6 @@
 import {ProjectLayoutType} from './model/ProjectLayoutType';
 import {ProjectLayoutDefinitions} from "./model/ProjectLayoutDefinitions";
-import {DirectoryPath} from "./utils/DirectoryPath";
+import {Path} from "./utils/Path";
 
 import * as Mkdirp from "mkdirp";
 
@@ -16,7 +16,7 @@ export class ProjectLayoutBuilder {
         let projectLayoutDefinition = this.projectLayoutDefinitions.findBy(this.layoutType);
 
         projectLayoutDefinition.hierarchyPaths().forEach(path => {
-            Mkdirp.sync(`${DirectoryPath.create(aDirectory, path)}`);
+            Mkdirp.sync(`${Path.create(aDirectory, path)}`);
         });
     }
 }
