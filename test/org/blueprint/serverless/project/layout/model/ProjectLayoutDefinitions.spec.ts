@@ -1,7 +1,7 @@
 import {ProjectLayoutType} from "../../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutType";
 import {ProjectLayoutDefinitions} from "../../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutDefinitions";
 import {ProjectLayoutDefinition} from "../../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutDefinition";
-import {ProjectLayoutTemplateLocation} from "../../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutTemplateLocation";
+import {ProjectLayoutTemplateFinder} from "../../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutTemplateFinder";
 
 import {expect} from "chai";
 import * as sinon from "sinon";
@@ -17,7 +17,7 @@ describe("Project Layout Definitions", () => {
             "projectName": "serverless-blueprint",
             "projectLayoutDefinitionElements": []
         };
-        sinon.stub(ProjectLayoutTemplateLocation, 'loadProjectLayoutDefinitionTemplateBy')
+        sinon.stub(ProjectLayoutTemplateFinder, 'findProjectLayoutDefinitionTemplateBy')
             .callsFake(() => layout);
 
         let projectLayoutDefinition: ProjectLayoutDefinition = ProjectLayoutDefinitions.findBy(ProjectLayoutType.Nested);
@@ -33,7 +33,7 @@ describe("Project Layout Definitions", () => {
                 "projectLayoutDefinitionElements": []
             }]
         };
-        sinon.stub(ProjectLayoutTemplateLocation, 'loadProjectLayoutDefinitionTemplateBy')
+        sinon.stub(ProjectLayoutTemplateFinder, 'findProjectLayoutDefinitionTemplateBy')
             .callsFake(() => layout);
 
         let projectLayoutDefinition: ProjectLayoutDefinition = ProjectLayoutDefinitions.findBy(ProjectLayoutType.Nested);
@@ -52,7 +52,7 @@ describe("Project Layout Definitions", () => {
                 }]
             }]
         };
-        sinon.stub(ProjectLayoutTemplateLocation, 'loadProjectLayoutDefinitionTemplateBy')
+        sinon.stub(ProjectLayoutTemplateFinder, 'findProjectLayoutDefinitionTemplateBy')
             .callsFake(() => layout);
 
         let projectLayoutDefinition: ProjectLayoutDefinition = ProjectLayoutDefinitions.findBy(ProjectLayoutType.Nested);
@@ -73,7 +73,7 @@ describe("Project Layout Definitions", () => {
                 },
             ]
         };
-        sinon.stub(ProjectLayoutTemplateLocation, 'loadProjectLayoutDefinitionTemplateBy')
+        sinon.stub(ProjectLayoutTemplateFinder, 'findProjectLayoutDefinitionTemplateBy')
             .callsFake(() => layout);
 
         let projectLayoutDefinition: ProjectLayoutDefinition = ProjectLayoutDefinitions.findBy(ProjectLayoutType.Nested);
