@@ -1,20 +1,20 @@
 import {ProjectLayoutDefinition} from "./ProjectLayoutDefinition";
 import {ProjectLayoutType} from "./ProjectLayoutType";
-import {ProjectLayoutTemplateFinder} from "./ProjectLayoutTemplateFinder";
+import {ProjectLayoutTemplates} from "./ProjectLayoutTemplates";
 
 import "reflect-metadata";
 import {plainToClass} from "class-transformer";
 
 export class ProjectLayoutDefinitions {
 
-    private projectLayoutTemplateFinder: ProjectLayoutTemplateFinder;
+    private projectLayoutTemplates: ProjectLayoutTemplates;
 
     constructor() {
-        this.projectLayoutTemplateFinder = ProjectLayoutTemplateFinder.instance();
+        this.projectLayoutTemplates = ProjectLayoutTemplates.instance();
     }
 
     findBy(layoutType: ProjectLayoutType): ProjectLayoutDefinition {
-        let template = this.projectLayoutTemplateFinder.findProjectLayoutDefinitionTemplateBy(layoutType);
+        let template = this.projectLayoutTemplates.findProjectLayoutDefinitionTemplateBy(layoutType);
         return plainToClass(ProjectLayoutDefinition, template);
     }
 }

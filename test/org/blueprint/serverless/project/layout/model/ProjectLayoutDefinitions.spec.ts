@@ -1,19 +1,19 @@
 import {ProjectLayoutType} from "../../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutType";
 import {ProjectLayoutDefinitions} from "../../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutDefinitions";
 import {ProjectLayoutDefinition} from "../../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutDefinition";
-import {ProjectLayoutTemplateFinder} from "../../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutTemplateFinder";
+import {ProjectLayoutTemplates} from "../../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutTemplates";
 
 import {expect} from "chai";
 import * as sinon from "sinon";
 
 describe("Project Layout Definitions", () => {
 
-    let projectLayoutTemplateFinder;
+    let projectLayoutTemplates;
     let mock;
 
     beforeEach(() => {
-        projectLayoutTemplateFinder = ProjectLayoutTemplateFinder.instance();
-        mock = sinon.mock(projectLayoutTemplateFinder);
+        projectLayoutTemplates = ProjectLayoutTemplates.instance();
+        mock = sinon.mock(projectLayoutTemplates);
     });
 
     afterEach(() => {
