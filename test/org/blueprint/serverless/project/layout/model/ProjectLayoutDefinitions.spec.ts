@@ -1,6 +1,5 @@
 import {ProjectLayoutType} from "../../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutType";
 import {ProjectLayoutDefinitions} from "../../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutDefinitions";
-import {ProjectLayoutDefinitionElement} from "../../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutDefinitionElement";
 import {ProjectLayoutDefinition} from "../../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutDefinition";
 import {ProjectLayoutTemplateLocation} from "../../../../../../../src/org/blueprint/serverless/project/layout/model/ProjectLayoutTemplateLocation";
 
@@ -13,17 +12,72 @@ describe("Project Layout Definitions", () => {
         sinon.restore();
     });
 
-    it("should load ProjectLayoutDefinition given a nested layout type", () => {
-
-        sinon.stub(ProjectLayoutTemplateLocation, 'get')
-            .callsFake(() => "../../../../../../../test/org/blueprint/serverless/project/layout/resources/mock_nested_layout.json");
+    it("should load ProjectLayoutDefinition with project name given a nested layout type", () => {
+        let layout = {
+            "projectName": "serverless-blueprint",
+            "projectLayoutDefinitionElements": []
+        };
+        sinon.stub(ProjectLayoutTemplateLocation, 'loadProjectLayoutDefinitionTemplateBy')
+            .callsFake(() => layout);
 
         let projectLayoutDefinition: ProjectLayoutDefinition = ProjectLayoutDefinitions.findBy(ProjectLayoutType.Nested);
 
         expect(projectLayoutDefinition.projectName).to.equal("serverless-blueprint");
-        expect(projectLayoutDefinition.hierarchyPaths()).to.deep.equal(
-            ["serverless-blueprint/src/serverless/controller",
-                "serverless-blueprint/test/serverless/controller"
-            ]);
+    });
+
+    it("should load ProjectLayoutDefinition with a single layout element given a nested layout type", () => {
+        let layout = {
+            "projectName": "serverless-blueprint",
+            "projectLayoutDefinitionElements": [{
+                "name": "src",
+                "projectLayoutDefinitionElements": []
+            }]
+        };
+        sinon.stub(ProjectLayoutTemplateLocation, 'loadProjectLayoutDefinitionTemplateBy')
+            .callsFake(() => layout);
+
+        let projectLayoutDefinition: ProjectLayoutDefinition = ProjectLayoutDefinitions.findBy(ProjectLayoutType.Nested);
+
+        expect(projectLayoutDefinition.hierarchyPaths()).to.deep.equal(["serverless-blueprint/src"]);
+    });
+
+    it("should load ProjectLayoutDefinition with a nested layout elements given a nested layout type", () => {
+        let layout = {
+            "projectName": "serverless-blueprint",
+            "projectLayoutDefinitionElements": [{
+                "name": "src",
+                "projectLayoutDefinitionElements": [{
+                    "name": "controller",
+                    "projectLayoutDefinitionElements": []
+                }]
+            }]
+        };
+        sinon.stub(ProjectLayoutTemplateLocation, 'loadProjectLayoutDefinitionTemplateBy')
+            .callsFake(() => layout);
+
+        let projectLayoutDefinition: ProjectLayoutDefinition = ProjectLayoutDefinitions.findBy(ProjectLayoutType.Nested);
+
+        expect(projectLayoutDefinition.hierarchyPaths()).to.deep.equal(["serverless-blueprint/src/controller"]);
+    });
+
+    it("should load ProjectLayoutDefinition with multiple layout elements given a nested layout type", () => {
+        let layout = {
+            "projectName": "serverless-blueprint",
+            "projectLayoutDefinitionElements": [
+                {
+                    "name": "src",
+                    "projectLayoutDefinitionElements": []
+                },{
+                    "name": "test",
+                    "projectLayoutDefinitionElements": []
+                },
+            ]
+        };
+        sinon.stub(ProjectLayoutTemplateLocation, 'loadProjectLayoutDefinitionTemplateBy')
+            .callsFake(() => layout);
+
+        let projectLayoutDefinition: ProjectLayoutDefinition = ProjectLayoutDefinitions.findBy(ProjectLayoutType.Nested);
+
+        expect(projectLayoutDefinition.hierarchyPaths()).to.deep.equal(["serverless-blueprint/src", "serverless-blueprint/test"]);
     });
 });
