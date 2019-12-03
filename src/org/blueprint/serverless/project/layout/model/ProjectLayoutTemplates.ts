@@ -7,7 +7,7 @@ export class ProjectLayoutTemplates {
 
     private static projectLayoutTemplates: ProjectLayoutTemplates;
 
-    private static layoutTemplateLocationByType = {
+    private layoutTemplateLocationByType = {
         [ProjectLayoutType.Nested]: "../resources/nested_layout.json"
     };
 
@@ -19,7 +19,7 @@ export class ProjectLayoutTemplates {
     }
 
     public findProjectLayoutDefinitionTemplateBy(layoutType: ProjectLayoutType) {
-        let filePath: string = path.join(__dirname, ProjectLayoutTemplates.layoutTemplateLocationByType[layoutType]);
+        let filePath: string = path.join(__dirname, this.layoutTemplateLocationByType[layoutType]);
         return JSON.parse(fs.readFileSync(filePath, "utf8"));
     }
 }
