@@ -7,8 +7,14 @@ import {plainToClass} from "class-transformer";
 
 export class ProjectLayoutDefinitions {
 
-    static findBy(layoutType: ProjectLayoutType): ProjectLayoutDefinition {
-        let template = ProjectLayoutTemplateFinder.findProjectLayoutDefinitionTemplateBy(layoutType);
+    private projectLayoutTemplateFinder: ProjectLayoutTemplateFinder;
+
+    constructor() {
+        this.projectLayoutTemplateFinder = new ProjectLayoutTemplateFinder();
+    }
+
+    findBy(layoutType: ProjectLayoutType): ProjectLayoutDefinition {
+        let template = this.projectLayoutTemplateFinder.findProjectLayoutDefinitionTemplateBy(layoutType);
         return plainToClass(ProjectLayoutDefinition, template);
     }
 }

@@ -17,10 +17,10 @@ describe("Project Layout Definitions", () => {
             "projectName": "serverless-blueprint",
             "projectLayoutDefinitionElements": []
         };
-        sinon.stub(ProjectLayoutTemplateFinder, 'findProjectLayoutDefinitionTemplateBy')
+        sinon.stub(ProjectLayoutTemplateFinder.prototype, 'findProjectLayoutDefinitionTemplateBy')
             .callsFake(() => layout);
 
-        let projectLayoutDefinition: ProjectLayoutDefinition = ProjectLayoutDefinitions.findBy(ProjectLayoutType.Nested);
+        let projectLayoutDefinition: ProjectLayoutDefinition = new ProjectLayoutDefinitions().findBy(ProjectLayoutType.Nested);
 
         expect(projectLayoutDefinition.projectName).to.equal("serverless-blueprint");
     });
@@ -33,10 +33,10 @@ describe("Project Layout Definitions", () => {
                 "projectLayoutDefinitionElements": []
             }]
         };
-        sinon.stub(ProjectLayoutTemplateFinder, 'findProjectLayoutDefinitionTemplateBy')
+        sinon.stub(ProjectLayoutTemplateFinder.prototype, 'findProjectLayoutDefinitionTemplateBy')
             .callsFake(() => layout);
 
-        let projectLayoutDefinition: ProjectLayoutDefinition = ProjectLayoutDefinitions.findBy(ProjectLayoutType.Nested);
+        let projectLayoutDefinition: ProjectLayoutDefinition = new ProjectLayoutDefinitions().findBy(ProjectLayoutType.Nested);
 
         expect(projectLayoutDefinition.hierarchyPaths()).to.deep.equal(["serverless-blueprint/src"]);
     });
@@ -52,10 +52,10 @@ describe("Project Layout Definitions", () => {
                 }]
             }]
         };
-        sinon.stub(ProjectLayoutTemplateFinder, 'findProjectLayoutDefinitionTemplateBy')
+        sinon.stub(ProjectLayoutTemplateFinder.prototype, 'findProjectLayoutDefinitionTemplateBy')
             .callsFake(() => layout);
 
-        let projectLayoutDefinition: ProjectLayoutDefinition = ProjectLayoutDefinitions.findBy(ProjectLayoutType.Nested);
+        let projectLayoutDefinition: ProjectLayoutDefinition = new ProjectLayoutDefinitions().findBy(ProjectLayoutType.Nested);
 
         expect(projectLayoutDefinition.hierarchyPaths()).to.deep.equal(["serverless-blueprint/src/controller"]);
     });
@@ -67,16 +67,16 @@ describe("Project Layout Definitions", () => {
                 {
                     "name": "src",
                     "projectLayoutDefinitionElements": []
-                },{
+                }, {
                     "name": "test",
                     "projectLayoutDefinitionElements": []
                 },
             ]
         };
-        sinon.stub(ProjectLayoutTemplateFinder, 'findProjectLayoutDefinitionTemplateBy')
+        sinon.stub(ProjectLayoutTemplateFinder.prototype, 'findProjectLayoutDefinitionTemplateBy')
             .callsFake(() => layout);
 
-        let projectLayoutDefinition: ProjectLayoutDefinition = ProjectLayoutDefinitions.findBy(ProjectLayoutType.Nested);
+        let projectLayoutDefinition: ProjectLayoutDefinition = new ProjectLayoutDefinitions().findBy(ProjectLayoutType.Nested);
 
         expect(projectLayoutDefinition.hierarchyPaths()).to.deep.equal(["serverless-blueprint/src", "serverless-blueprint/test"]);
     });

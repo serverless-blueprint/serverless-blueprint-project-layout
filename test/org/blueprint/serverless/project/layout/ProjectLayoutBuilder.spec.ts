@@ -17,7 +17,7 @@ describe("Project Layout Builder", () => {
     it("should create a directory from layout definition containing just the project name", () => {
 
         let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint", []);
-        sinon.stub(ProjectLayoutDefinitions, 'findBy')
+        sinon.stub(ProjectLayoutDefinitions.prototype, 'findBy')
             .callsFake(() => projectLayoutDefinition);
 
         let projectLayoutBuilder = new ProjectLayoutBuilder(ProjectLayoutType.Nested);
@@ -33,7 +33,7 @@ describe("Project Layout Builder", () => {
 
         let projectLayoutDefinitionElement = ProjectLayoutDefinitionElement.create("src");
         let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint", [projectLayoutDefinitionElement]);
-        sinon.stub(ProjectLayoutDefinitions, 'findBy')
+        sinon.stub(ProjectLayoutDefinitions.prototype, 'findBy')
             .callsFake(() => projectLayoutDefinition);
 
         let projectLayoutBuilder = new ProjectLayoutBuilder(ProjectLayoutType.Nested);
@@ -54,7 +54,7 @@ describe("Project Layout Builder", () => {
         let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint",
             [projectLayoutDefinitionElementSrc, projectLayoutDefinitionElementTest]);
 
-        sinon.stub(ProjectLayoutDefinitions, 'findBy')
+        sinon.stub(ProjectLayoutDefinitions.prototype, 'findBy')
             .callsFake(() => projectLayoutDefinition);
 
         let projectLayoutBuilder = new ProjectLayoutBuilder(ProjectLayoutType.Nested);
@@ -78,7 +78,7 @@ describe("Project Layout Builder", () => {
         fs.mkdirSync(directory);
 
         let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint", []);
-        sinon.stub(ProjectLayoutDefinitions, 'findBy')
+        sinon.stub(ProjectLayoutDefinitions.prototype, 'findBy')
             .callsFake(() => projectLayoutDefinition);
 
         let path = `${directory}/${projectLayoutDefinition.projectName}`;
