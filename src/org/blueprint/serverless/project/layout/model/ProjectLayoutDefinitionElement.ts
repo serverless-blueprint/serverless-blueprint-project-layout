@@ -9,7 +9,7 @@ export class ProjectLayoutDefinitionElement {
     @Type(() => ProjectLayoutDefinitionElement)
     public projectLayoutDefinitionElements: ProjectLayoutDefinitionElement[];
 
-    static create(name: string, projectLayoutDefinitionElements: ProjectLayoutDefinitionElement[] = []) : ProjectLayoutDefinitionElement {
+    static create(name: string, projectLayoutDefinitionElements: ProjectLayoutDefinitionElement[] = []): ProjectLayoutDefinitionElement {
         let element = new ProjectLayoutDefinitionElement();
         element.name = name;
         element.projectLayoutDefinitionElements = projectLayoutDefinitionElements;
@@ -17,16 +17,17 @@ export class ProjectLayoutDefinitionElement {
         return element;
     }
 
-    hierarchyPathStartingAt(path: string): string {
-        // noinspection LoopStatementThatDoesntLoopJS
+    hierarchyPathStartingAt(path: string, paths: string[] = []): string[] {
         for (let projectLayoutDefinitionElement of this.projectLayoutDefinitionElements) {
-            return !projectLayoutDefinitionElement.furtherHierarchyExists() ?
-                Path.create(path, projectLayoutDefinitionElement.name) :
-                projectLayoutDefinitionElement.hierarchyPathStartingAt(
+            if (projectLayoutDefinitionElement.furtherHierarchyExists())
+                return projectLayoutDefinitionElement.hierarchyPathStartingAt(
                     Path.create(path, projectLayoutDefinitionElement.name)
                 );
+            else
+                paths = paths.concat(Path.create(path, projectLayoutDefinitionElement.name));
         }
-        return path;
+
+        return paths.length == 0 ? [path] : paths;
     }
 
     private furtherHierarchyExists() {

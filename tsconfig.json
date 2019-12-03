@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
-      "experimentalDecorators": true,
+    "experimentalDecorators": true,
     "noEmitOnError": true,
     "outDir": "./out",
     "sourceRoot": "src/",
     "sourceMap": true,
     "target": "es6",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "lib": [
+      "esnext.array",
+      "es2018",
+      "dom"
+    ]
   }
 }

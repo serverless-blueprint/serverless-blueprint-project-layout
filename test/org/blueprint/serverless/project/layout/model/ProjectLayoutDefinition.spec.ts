@@ -76,4 +76,18 @@ describe("Project Layout Definition", () => {
 
         expect(paths).to.deep.equal(["serverless-blueprint/src/serverless/repository", "serverless-blueprint/test/serverless/repository"]);
     });
+
+    it("should return paths containing project name, src directory name and multiple child component names", () => {
+
+        let projectLayoutDefinitionElementController = ProjectLayoutDefinitionElement.create("controller");
+        let projectLayoutDefinitionElementService = ProjectLayoutDefinitionElement.create("service");
+        let projectLayoutDefinitionElementSrc = ProjectLayoutDefinitionElement.create("src", [projectLayoutDefinitionElementController, projectLayoutDefinitionElementService]);
+        let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint", [projectLayoutDefinitionElementSrc]);
+
+        let paths = projectLayoutDefinition.hierarchyPaths();
+
+        expect(paths).to.deep.equal(["serverless-blueprint/src/controller",
+            "serverless-blueprint/src/service"
+        ]);
+    });
 });

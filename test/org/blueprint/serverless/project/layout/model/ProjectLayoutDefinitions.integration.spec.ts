@@ -13,7 +13,12 @@ describe("Project Layout Definitions (Integration)", () => {
         expect(projectLayoutDefinition.projectName).to.equal("serverless-blueprint");
         expect(projectLayoutDefinition.hierarchyPaths()).to.deep.equal([
             "serverless-blueprint/src/serverless/controller",
-            "serverless-blueprint/test/serverless/controller"]);
+            "serverless-blueprint/src/serverless/service",
+            "serverless-blueprint/src/serverless/repository",
+            "serverless-blueprint/test/serverless/controller",
+            "serverless-blueprint/test/serverless/service",
+            "serverless-blueprint/test/serverless/repository"
+        ]);
     });
 
     it("should load ProjectLayoutDefinition a flat layout type", () => {
@@ -23,6 +28,11 @@ describe("Project Layout Definitions (Integration)", () => {
         expect(projectLayoutDefinition.projectName).to.equal("serverless-blueprint");
         expect(projectLayoutDefinition.hierarchyPaths()).to.deep.equal([
             "serverless-blueprint/src/controller",
-            "serverless-blueprint/test/controller"]);
+            "serverless-blueprint/src/service",
+            "serverless-blueprint/src/repository",
+            "serverless-blueprint/test/controller",
+            "serverless-blueprint/test/service",
+            "serverless-blueprint/test/repository"
+        ]);
     });
 });

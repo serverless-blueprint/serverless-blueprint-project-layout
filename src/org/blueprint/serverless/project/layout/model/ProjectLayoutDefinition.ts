@@ -23,7 +23,7 @@ export class ProjectLayoutDefinition {
         if (this.projectLayoutDefinitionElements.length == 0)
             return [this.projectName];
 
-        return this.projectLayoutDefinitionElements.map(projectLayoutDefinitionElement => {
+        return this.projectLayoutDefinitionElements.flatMap(projectLayoutDefinitionElement => {
             return projectLayoutDefinitionElement.hierarchyPathStartingAt(
                 Path.create(this.projectName, projectLayoutDefinitionElement.name)
             );
