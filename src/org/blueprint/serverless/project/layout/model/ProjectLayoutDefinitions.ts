@@ -10,7 +10,7 @@ export class ProjectLayoutDefinitions {
     private projectLayoutTemplateFinder: ProjectLayoutTemplateFinder;
 
     constructor() {
-        this.projectLayoutTemplateFinder = new ProjectLayoutTemplateFinder();
+        this.projectLayoutTemplateFinder = ProjectLayoutTemplateFinder.instance();
     }
 
     findBy(layoutType: ProjectLayoutType): ProjectLayoutDefinition {

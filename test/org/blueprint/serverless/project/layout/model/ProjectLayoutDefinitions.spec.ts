@@ -8,6 +8,14 @@ import * as sinon from "sinon";
 
 describe("Project Layout Definitions", () => {
 
+    let projectLayoutTemplateFinder;
+    let mock;
+
+    beforeEach(() => {
+        projectLayoutTemplateFinder = ProjectLayoutTemplateFinder.instance();
+        mock = sinon.mock(projectLayoutTemplateFinder);
+    });
+
     afterEach(() => {
         sinon.restore();
     });
@@ -17,8 +25,7 @@ describe("Project Layout Definitions", () => {
             "projectName": "serverless-blueprint",
             "projectLayoutDefinitionElements": []
         };
-        sinon.stub(ProjectLayoutTemplateFinder.prototype, 'findProjectLayoutDefinitionTemplateBy')
-            .callsFake(() => layout);
+        mock.expects( 'findProjectLayoutDefinitionTemplateBy').returns(layout);
 
         let projectLayoutDefinition: ProjectLayoutDefinition = new ProjectLayoutDefinitions().findBy(ProjectLayoutType.Nested);
 
@@ -33,8 +40,8 @@ describe("Project Layout Definitions", () => {
                 "projectLayoutDefinitionElements": []
             }]
         };
-        sinon.stub(ProjectLayoutTemplateFinder.prototype, 'findProjectLayoutDefinitionTemplateBy')
-            .callsFake(() => layout);
+        mock.expects('findProjectLayoutDefinitionTemplateBy')
+            .returns(layout);
 
         let projectLayoutDefinition: ProjectLayoutDefinition = new ProjectLayoutDefinitions().findBy(ProjectLayoutType.Nested);
 
@@ -52,8 +59,8 @@ describe("Project Layout Definitions", () => {
                 }]
             }]
         };
-        sinon.stub(ProjectLayoutTemplateFinder.prototype, 'findProjectLayoutDefinitionTemplateBy')
-            .callsFake(() => layout);
+        mock.expects('findProjectLayoutDefinitionTemplateBy')
+            .returns(layout);
 
         let projectLayoutDefinition: ProjectLayoutDefinition = new ProjectLayoutDefinitions().findBy(ProjectLayoutType.Nested);
 
@@ -73,8 +80,8 @@ describe("Project Layout Definitions", () => {
                 },
             ]
         };
-        sinon.stub(ProjectLayoutTemplateFinder.prototype, 'findProjectLayoutDefinitionTemplateBy')
-            .callsFake(() => layout);
+        mock.expects('findProjectLayoutDefinitionTemplateBy')
+            .returns(layout);
 
         let projectLayoutDefinition: ProjectLayoutDefinition = new ProjectLayoutDefinitions().findBy(ProjectLayoutType.Nested);
 
