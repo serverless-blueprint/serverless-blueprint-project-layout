@@ -19,6 +19,25 @@
           ]
         }
       ]
+    },
+    {
+      "name": "test",
+      "projectLayoutDefinitionElements": [
+        {
+          "name": "serverless",
+          "projectLayoutDefinitionElements": [
+            {
+              "name": "controller"
+            },
+            {
+              "name": "service"
+            },
+            {
+              "name": "repository"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
