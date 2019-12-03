@@ -1,3 +1,4 @@
 export enum ProjectLayoutType {
-    Nested
+    Nested,
+    Flat
 }

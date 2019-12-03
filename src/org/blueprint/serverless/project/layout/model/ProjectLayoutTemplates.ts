@@ -8,7 +8,8 @@ export class ProjectLayoutTemplates {
     private static projectLayoutTemplates: ProjectLayoutTemplates;
 
     private layoutTemplateLocationByType = {
-        [ProjectLayoutType.Nested]: "../resources/nested_layout.json"
+        [ProjectLayoutType.Nested]: "../resources/nested_layout.json",
+        [ProjectLayoutType.Flat]: "../resources/flat_layout.json"
     };
 
     static instance(): ProjectLayoutTemplates {

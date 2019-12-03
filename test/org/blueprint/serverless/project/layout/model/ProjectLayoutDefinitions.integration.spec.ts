@@ -15,4 +15,14 @@ describe("Project Layout Definitions (Integration)", () => {
             "serverless-blueprint/src/serverless/controller",
             "serverless-blueprint/test/serverless/controller"]);
     });
+
+    it("should load ProjectLayoutDefinition a flat layout type", () => {
+
+        let projectLayoutDefinition: ProjectLayoutDefinition = new ProjectLayoutDefinitions().findBy(ProjectLayoutType.Flat);
+
+        expect(projectLayoutDefinition.projectName).to.equal("serverless-blueprint");
+        expect(projectLayoutDefinition.hierarchyPaths()).to.deep.equal([
+            "serverless-blueprint/src/controller",
+            "serverless-blueprint/test/controller"]);
+    });
 });
