@@ -12,6 +12,10 @@ export class ProjectLayoutBuilder {
         this.projectLayoutDefinitions = new ProjectLayoutDefinitions();
     }
 
+    buildInCurrentDirectory() {
+        this.buildIn(".")
+    }
+
     buildIn(aDirectory: string) {
         let projectLayoutDefinition = this.projectLayoutDefinitions.findBy(this.layoutType);
 

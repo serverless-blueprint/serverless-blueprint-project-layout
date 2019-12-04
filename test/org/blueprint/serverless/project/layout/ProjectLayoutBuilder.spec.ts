@@ -14,6 +14,21 @@ describe("Project Layout Builder", () => {
         sinon.restore();
     });
 
+    it("should create a directory in current directory by default", () => {
+
+        let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint", []);
+        sinon.stub(ProjectLayoutDefinitions.prototype, 'findBy')
+            .callsFake(() => projectLayoutDefinition);
+
+        let projectLayoutBuilder = new ProjectLayoutBuilder(ProjectLayoutType.Nested);
+        projectLayoutBuilder.buildInCurrentDirectory();
+
+        let directoryCreated = fs.existsSync(projectLayoutDefinition.projectName);
+        expect(directoryCreated).to.be.true;
+
+        fs.rmdirSync(projectLayoutDefinition.projectName);
+    });
+
     it("should create a directory from layout definition containing just the project name", () => {
 
         let projectLayoutDefinition = ProjectLayoutDefinition.create("serverless-blueprint", []);
