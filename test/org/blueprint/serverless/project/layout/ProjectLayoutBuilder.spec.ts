@@ -20,7 +20,7 @@ describe("Project Layout Builder", () => {
         sinon.stub(ProjectLayoutDefinitions.prototype, 'findBy')
             .callsFake(() => projectLayoutDefinition);
 
-        let projectLayoutBuilder = new ProjectLayoutBuilder(ProjectLayoutType.Nested);
+        let projectLayoutBuilder = new ProjectLayoutBuilder(null, ProjectLayoutType.Nested);
         projectLayoutBuilder.buildInCurrentDirectory();
 
         let directoryCreated = fs.existsSync(projectLayoutDefinition.projectName);
@@ -35,7 +35,7 @@ describe("Project Layout Builder", () => {
         sinon.stub(ProjectLayoutDefinitions.prototype, 'findBy')
             .callsFake(() => projectLayoutDefinition);
 
-        let projectLayoutBuilder = new ProjectLayoutBuilder(ProjectLayoutType.Nested);
+        let projectLayoutBuilder = new ProjectLayoutBuilder(null, ProjectLayoutType.Nested);
         projectLayoutBuilder.buildIn(".");
 
         let directoryCreated = fs.existsSync(projectLayoutDefinition.projectName);
@@ -51,7 +51,7 @@ describe("Project Layout Builder", () => {
         sinon.stub(ProjectLayoutDefinitions.prototype, 'findBy')
             .callsFake(() => projectLayoutDefinition);
 
-        let projectLayoutBuilder = new ProjectLayoutBuilder(ProjectLayoutType.Nested);
+        let projectLayoutBuilder = new ProjectLayoutBuilder(null, ProjectLayoutType.Nested);
         projectLayoutBuilder.buildIn(".");
 
         let directoryCreated = fs.existsSync(`${projectLayoutDefinition.projectName}/${projectLayoutDefinitionElement.name}`);
@@ -72,7 +72,7 @@ describe("Project Layout Builder", () => {
         sinon.stub(ProjectLayoutDefinitions.prototype, 'findBy')
             .callsFake(() => projectLayoutDefinition);
 
-        let projectLayoutBuilder = new ProjectLayoutBuilder(ProjectLayoutType.Nested);
+        let projectLayoutBuilder = new ProjectLayoutBuilder(null, ProjectLayoutType.Nested);
         projectLayoutBuilder.buildIn(".");
 
         let srcDirectoryPath = `${projectLayoutDefinition.projectName}/${projectLayoutDefinitionElementSrc.name}`;
@@ -97,7 +97,7 @@ describe("Project Layout Builder", () => {
             .callsFake(() => projectLayoutDefinition);
 
         let path = `${directory}/${projectLayoutDefinition.projectName}`;
-        let projectLayoutBuilder = new ProjectLayoutBuilder(ProjectLayoutType.Nested);
+        let projectLayoutBuilder = new ProjectLayoutBuilder(null, ProjectLayoutType.Nested);
 
         projectLayoutBuilder.buildIn(directory);
 

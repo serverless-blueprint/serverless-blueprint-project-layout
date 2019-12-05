@@ -16,7 +16,8 @@
     "class-transformer": "^0.2.3",
     "mkdirp": "latest",
     "reflect-metadata": "^0.1.13",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.2",
+    "serverless-blueprint-template-engine": "file:../serverless-blueprint-template-engine"
   },
   "scripts": {
     "build": "tsc",

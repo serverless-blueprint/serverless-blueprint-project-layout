@@ -1,11 +1,11 @@
 {
-  "projectName": "serverless-blueprint",
+  "projectName": "{{projectName}}",
   "projectLayoutDefinitionElements": [
     {
       "name": "src",
       "projectLayoutDefinitionElements": [
         {
-          "name": "serverless",
+          "name": "{{moduleName}}",
           "projectLayoutDefinitionElements": [
             {
               "name": "controller"
@@ -24,7 +24,7 @@
       "name": "test",
       "projectLayoutDefinitionElements": [
         {
-          "name": "serverless",
+          "name": "{{moduleName}}",
           "projectLayoutDefinitionElements": [
             {
               "name": "controller"

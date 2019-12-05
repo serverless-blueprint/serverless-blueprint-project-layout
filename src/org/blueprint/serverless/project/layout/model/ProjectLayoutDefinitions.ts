@@ -4,6 +4,8 @@ import {ProjectLayoutTemplates} from "./ProjectLayoutTemplates";
 
 import "reflect-metadata";
 import {plainToClass} from "class-transformer";
+import {ProjectLayoutMetaData} from "./ProjectLayoutMetaData";
+import {StringTemplate} from "serverless-blueprint-template-engine/src/org/blueprint/serverless/template/engine/StringTemplate";
 
 export class ProjectLayoutDefinitions {
 
@@ -13,8 +15,9 @@ export class ProjectLayoutDefinitions {
         this.projectLayoutTemplates = ProjectLayoutTemplates.instance();
     }
 
-    findBy(layoutType: ProjectLayoutType): ProjectLayoutDefinition {
+    findBy(layoutType: ProjectLayoutType, projectLayoutMetaData: ProjectLayoutMetaData): ProjectLayoutDefinition {
         let template = this.projectLayoutTemplates.findProjectLayoutDefinitionTemplateBy(layoutType);
-        return plainToClass(ProjectLayoutDefinition, template);
+        let mergedTemplate = new StringTemplate(template).mergeWith(projectLayoutMetaData);
+        return plainToClass(ProjectLayoutDefinition, JSON.parse(mergedTemplate));
     }
 }
