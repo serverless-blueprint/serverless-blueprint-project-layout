@@ -58,8 +58,7 @@ describe("Project Layout Builder", () => {
         expect(directoryCreated).to.be.true;
 
         let directoryPath = `${projectLayoutDefinition.projectName}/${projectLayoutDefinitionElement.name}`;
-        fs.rmdirSync(directoryPath);
-        fs.rmdirSync(projectLayoutDefinition.projectName);
+        fs.rmdirSync(directoryPath, {recursive: true});
     });
 
     it("should create a directory from layout definition with project name and a module name", () => {
@@ -83,9 +82,7 @@ describe("Project Layout Builder", () => {
         let testDirectoryCreated = fs.existsSync(testDirectoryPath);
         expect(testDirectoryCreated).to.be.true;
 
-        fs.rmdirSync(srcDirectoryPath);
-        fs.rmdirSync(testDirectoryPath);
-        fs.rmdirSync(projectLayoutDefinition.projectName)
+        fs.rmdirSync(projectLayoutDefinition.projectName, {recursive: true});
     });
 
     it("should create a directory from layout definition containing just the project name in specified directory", () => {
@@ -104,7 +101,6 @@ describe("Project Layout Builder", () => {
         let directoryCreated = fs.existsSync(path);
         expect(directoryCreated).to.be.true;
 
-        fs.rmdirSync(path);
-        fs.rmdirSync(directory);
+        fs.rmdirSync(directory, {recursive: true});
     });
 });
